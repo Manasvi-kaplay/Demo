@@ -1,0 +1,31 @@
+<h2><i>Admin panel......</i></h2><br><br>
+    <form class="btn" style="float: right" action="/logout" method="get">
+        <button type="submit">
+            Sign out
+        </button>
+    </form>
+    <table>
+        <tr>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Description</th>
+            <th>Product Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% data.forEach(function(x){ %>
+            <div>
+            <tr>
+                <td><%= x.productname %></td>
+                <td><%= x.category %></td>
+                <td><%= x.price %></td>
+                <td><%=x.description%></td>
+                <td><img src = "/product_images/<%= x.image %>" height="100" width="100"></td>
+                <td><a href="/addproduct/edit/<%= x._id %>" data-toggle="modal" class="btn btn-sm btn-danger">Edit</a></td>
+                <td><a href="/addproduct/delete/<%= x._id %>" data-toggle="modal" class="btn btn-sm btn-danger">Delete</a></td>
+            </tr>
+            </div>
+    <% }) %>
+    </table>
+<a href="/addproduct">Add new product</a>
